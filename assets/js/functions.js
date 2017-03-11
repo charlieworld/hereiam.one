@@ -71,7 +71,7 @@
     if (IEVersion() != 11) 
     {
       $('html').niceScroll({
-        cursorcolor: "#3498db",
+        cursorcolor: "#99CC00",
         zindex: '99999',
         cursorminheight: 60,
         scrollspeed: 80,

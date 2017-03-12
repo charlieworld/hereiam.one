@@ -1211,7 +1211,13 @@ footer a {
 .post-area{border-bottom: 2px solid #99CC00;}
 
 .hover:hover{ cursor: pointer;}
-h2{letter-spacing: 0.8rem;}
+h2{letter-spacing: 0.3rem;}
 .txt_img{width: 100%;text-align: center}
 .txt_img img{width:90%; max-width: 500px;}
 .txt_img_L img{ max-width: 100%; max-width: 900px;}
+.txt_padding{ padding-left: 3px;}
+
+#stories .post-area-title::before{ width: 25%;}
+#stories .post-area-title:after{ width: 25%;}
+
+#about .post-area{border: 0;}

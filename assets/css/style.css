@@ -1221,4 +1221,5 @@ h2{letter-spacing: 0.3rem;}
 #stories .post-area-title:after{ width: 25%;}
 
 #about .post-area{border: 0;}
-.video_frame{width: 100%; height: 30vh; margin: auto;}
+.video_frame_col{ text-align:center;}
+.video_frame{width: 90%; height: 30vh; margin-bottom: 20px; overflow: hidden; border:#99CC00 solid 3px;}

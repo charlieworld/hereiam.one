@@ -72,6 +72,9 @@
   								</li>
   								<li>
   									<a href="https://www.facebook.com/HEREiAM.Biotech" target="_blank"  class="top-icon fa fa-facebook"></a>
+                  </li>
+                  <li>
+  									<a href="/en" style="font-weight:800;color:white">中/EN</a>
   								</li>
   							</ul>
   						</div>
@@ -124,23 +127,22 @@
 
 
 <section>
-<div id="home_video" 
-  class="player"
-  style="min-height:60vh;"
-  data-property="{
-    videoURL:'https://youtu.be/EHiQh02tp3o',
-    containment:'#home_video',
-    autoPlay:true,
-    mute:true,
-    startAt:0,
-    opacity:1,
-    loop:true,
-    showControls:false,
-    showYTLogo: false,
-    stopMovieOnBlur: false}">
-<div id="video_sound" class="video_btn video_btn_mute hover"></div>
-</div>
-  
+  <div id="home_video" 
+    class="player"
+    style="min-height:60vh;"
+    data-property="{
+      videoURL:'https://youtu.be/EHiQh02tp3o',
+      containment:'#home_video',
+      autoPlay:true,
+      mute:true,
+      startAt:0,
+      opacity:1,
+      loop:true,
+      showControls:false,
+      showYTLogo: false,
+      stopMovieOnBlur: false}">
+  <div id="video_sound" class="video_btn video_btn_mute hover"></div>
+  </div>
 </section><!-- /#main-slider -->
 
 <section id="videos">
@@ -342,7 +344,6 @@
     </div>
   </div>
 </div>
-  
 </section>  <!-- news -->
 
 
@@ -668,7 +669,7 @@
   <div id="footer-bottom" class="footer-bottom text-center">
     <div class="container">
       <div id="copyright" class="copyright">
-        &copy; 有我在生物科技 HEREiAM Biotech 2017 - Powered by <a href="https://www.facebook.com/charlie.chang.758" style="text-decoration: underline">Charlie</a> &amp; Wei with &hearts;
+        &copy; 有我在生物科技 HEREiAM&trade; Biotech 2018 - Webpage Design by <a href="https://www.facebook.com/charlie.chang.758" style="text-decoration: underline">Charlie</a> &amp; Wei with &hearts;
       </div><!-- /#copyright -->
     </div>
   </div><!-- /#footer-bottom -->
@@ -696,9 +697,41 @@
 <!-- Custom Functions  -->
 <script src="assets/js/functions.js"></script>
 
+<!-- VueJs  -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-
-
+<script>
+var app = new Vue({
+  el: '#news',
+  created: function () {
+    // `this` points to the vm instance
+    this.getNews();
+  },
+  data: {
+    loading: true,
+    news: []
+  },
+  methods: {
+    geData() {
+      axios({
+        method: 'get',
+        url: '/data/news_en.json',
+      })
+      .then((response) => {
+        this.news = response.data;
+        console.log('News :',news);
+        this.loading = false;
+      })
+      .catch((error) => {
+        console.error(error)
+      });
+    },
+  }
+  
+})
+</script>
 
 
 <script>

@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>有我在生物科技 HEREiAM Biotech</title>
+	<title>有我在生物科技 HEREiAM&trade; Biotech</title>
   <link rel="icon" href="images/favicon.png">
 	<meta name="description" content="凡世．我在 from Earth to Earth．HERE i AM" >
 	<meta name="author" content="charlie and Wei">
 
-  <meta name="og:title" content="有我在生物科技 HEREiAM Biotech">
+  <meta name="og:title" content="HEREiAM&trade; Biotech">
   <meta name="og:description" content="凡世．我在 from Earth to Earth．HERE i AM">
   <meta name="og:type" content="website">
-  <meta property="og:url" content="http://hereiam.one"/>
+  <meta property="og:url" content="https://hereiam.one"/>
   <meta name="og:image" content="images/ogimg.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -127,22 +127,23 @@
 
 
 <section>
-  <div id="home_video" 
-    class="player"
-    style="min-height:60vh;"
-    data-property="{
-      videoURL:'https://youtu.be/EHiQh02tp3o',
-      containment:'#home_video',
-      autoPlay:true,
-      mute:true,
-      startAt:0,
-      opacity:1,
-      loop:true,
-      showControls:false,
-      showYTLogo: false,
-      stopMovieOnBlur: false}">
-  <div id="video_sound" class="video_btn video_btn_mute hover"></div>
-  </div>
+<div id="home_video" 
+  class="player"
+  style="min-height:60vh;"
+  data-property="{
+    videoURL:'https://youtu.be/qic02t6AEW0',
+    containment:'#home_video',
+    autoPlay:true,
+    mute:true,
+    startAt:0,
+    opacity:1,
+    loop:true,
+    showControls:false,
+    showYTLogo: false,
+    stopMovieOnBlur: false}">
+<div id="video_sound" class="video_btn video_btn_mute hover"></div>
+</div>
+  
 </section><!-- /#main-slider -->
 
 <section id="videos">
@@ -150,17 +151,17 @@
   <div class="post-area">
     <div class="post-area-top text-center">
       <h2 class="post-area-title">最新影片</h2>
-      <p class="title-description" style="color: #99CC00;">Videos</p>
+      <p class="title-description" style="color: #99CC00;">Latest Clips</p>
     </div><!-- /.post-area-top -->
     <div class="row" style="margin-top: 40px;">
       <div class="col-sm-6 video_frame_col">
-        <iframe class="video_frame" scrolling="no"  src="https://www.youtube.com/embed/EHiQh02tp3o" frameborder="0" allowfullscreen></iframe>
+        <iframe class="video_frame" scrolling="no"  src="https://www.youtube.com/embed/qic02t6AEW0" frameborder="0" allowfullscreen></iframe>
       </div>
       <div class="col-sm-6 video_frame_col">
-        <iframe class="video_frame" scrolling="no" src="https://www.youtube.com/embed/br6lNtBqs-g" frameborder="0" allowfullscreen></iframe>
+        <iframe class="video_frame" scrolling="no" src="https://www.youtube.com/embed/Mh6Xd243tt4" frameborder="0" allowfullscreen></iframe>
       </div>
       <div class="col-sm-6 video_frame_col">
-        <iframe class="video_frame" scrolling="no" src="" frameborder="0" allowfullscreen></iframe>
+        <iframe class="video_frame" scrolling="no" src="https://www.youtube.com/embed/lTS-UHuBVss" frameborder="0" allowfullscreen></iframe>
       </div>
       <div class="col-sm-6 video_frame_col">
         <iframe class="video_frame" scrolling="no" src="" frameborder="0" allowfullscreen></iframe>
@@ -186,154 +187,25 @@
      <div class="row">
       <div class="service-items">
         <div class="col-sm-12">
-
             <div class="service-accordion">
               <div class="accordion">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
-            <!---------------- newsitem start ---------------->
-                  <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="news_heading_1">
-                      <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#news_collapseOne_1" aria-expanded="false" aria-controls="news_collapseOne_1">
-                          2017年2月28日【國美館】【展出】
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="news_collapseOne_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="news_heading_1">
-                      <div class="panel-body">
-                        <p>
-                        承蒙國家美術館（台中）的邀請，本公司將於四月底到六月中之間，於該館二樓展出旗艦商品，並舉辦產品體驗會，與大家分享《有我在》顧客的珍貴生命故事！<br>
-                        請密切注意本公司的臉書粉絲頁（請至臉書搜尋《有我在》並按下LIKE）。屆時搭配展出，將會有母親節專屬的優惠活動，千萬不要錯過！
-                        </p>
+                  <template v-for="item of newsList">
+                    <div class="panel panel-default">
+                      <div class="panel-heading" role="tab" :id="'news_heading'+item.id">
+                        <h4 class="panel-title">
+                          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" :href="'#news_collapseOne_'+item.id" aria-expanded="false" :aria-controls="'#news_collapseOne_'+item.id">
+                            <span>{{item.time}}  {{item.title}}</span>
+                          </a>
+                        </h4>
+                      </div>
+                      <div :id="'news_collapseOne_'+item.id" class="panel-collapse collapse" role="tabpanel" :aria-labelledby="'news_heading_'+item.id">
+                        <div class="panel-body">
+                          <p v-html="item.content"></p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-            <!---------------- newsitem end---------------->
-            <!---------------- newsitem start ---------------->
-                  <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="news_heading_2">
-                      <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#news_collapseOne_2" aria-expanded="false" aria-controls="news_collapseOne_2">
-                          2016年10月31日【產品體驗會】【圓滿成功】
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="news_collapseOne_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="news_heading_2">
-                      <div class="panel-body">
-                        <span class="accordion-title">第一回合的兩場產品體驗會圓滿結束！</span>
-                        <p>
-                        真的很累，但是也真的很開心能跟大家互動。請密切注意我們的動態，對產品有興趣的朋友請不要害羞，趕快跟我們聯繫，我們的產品專員會替您詳細解答各種疑惑。我們不定期會有促銷方案喔！<br>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-            <!---------------- newsitem end---------------->
-            <!---------------- newsitem start ---------------->
-                  <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="news_heading_3">
-                      <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#news_collapseOne_3" aria-expanded="false" aria-controls="news_collapseOne_3">
-                          2016年9月21日【產品體驗會】【售票開始】
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="news_collapseOne_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="news_heading_3">
-                      <div class="panel-body">
-                        <span class="accordion-title">《有我在》的第一次產品發表與現場體驗會已經開始售票了！有興趣的朋友請快點訂位喔！
-            </span>
-                        <p>
-                      原價600元，十月十日以前定位可以享八折優惠，一共兩場，每場只有40張票，要訂要快！
-
-            請至兩廳院售票系統：https://ww1.artsticket.com.tw/…/P…/ProductsDetailsPage.aspx…
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-            <!---------------- newsitem end---------------->
-            <!---------------- newsitem start ---------------->
-                  <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="news_heading_4">
-                      <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#news_collapseOne_4" aria-expanded="false" aria-controls="news_collapseOne_4">
-                        2016年9月7日【產品試用者．額滿】
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="news_collapseOne_4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="news_heading_4">
-                      <div class="panel-body">
-                        <span class="accordion-title">感謝各位的熱烈回響，《有我在》第一梯次產品免費試用的六個名額，已經全滿！有興趣的朋友們，可能要看看以後還有沒有機會囉。</span>
-                        <p>
-                        誠摯邀請大家，在十月十五日和二十二日這兩個星期六的晚上七點，來古亭的《議題製作所》參加《有我在》生物科技股份有限公司的第一次產品發表會和現場活動！<br>
-
-            為了讓大家有最近距離的親身體驗，每一場只有 40 張票。近期內會公布購票方式！請密切注意！ 
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-            <!---------------- newsitem end---------------->
-            <!---------------- newsitem start ---------------->
-                  <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="news_heading_5">
-                      <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#news_collapseOne_5" aria-expanded="false" aria-controls="news_collapseOne_5">
-                          2016年9月3日【街頭訪問】
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="news_collapseOne_5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="news_heading_5">
-                      <div class="panel-body">
-                        <p>
-                        今天我們㑹在街頭做訪問。也許，你也會遇到我們喔！朝氣滿滿，出發！ 
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-            <!---------------- newsitem end---------------->
-            <!---------------- newsitem start ---------------->
-                  <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="news_heading_6">
-                      <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#news_collapseOne_6" aria-expanded="false" aria-controls="news_collapseOne_6">
-                          2016年8月30日【徵求產品試用者】
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="news_collapseOne_6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="news_heading_6">
-                      <div class="panel-body">
-                        <span class="accordion-title">《有我在》生物科技股份有限公司，誠徵六位生命延展服務《有我在》免費試用者。</span>
-                        <p>
-                        僅需要提供您的檢體（本公司的生物工程師，將親自到府為您解說並採樣），並在產品公開說明㑹時參加我們的活動（您將得到一張免費的活動公關票）即可喔！<br>
-            想要讓另一個生命擁有你的基因，在你離開之後，繼續活下去，代替你，陪伴你的親友嗎？現在，你可以免費體驗！<br>
-            <br>
-            有興趣者請留言<a href="https://www.facebook.com/HEREiAM.Biotech">《有我在》臉書粉絲頁</a>。名額有限，額滿就沒有了喔！
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-            <!---------------- newsitem end---------------->
-            <!---------------- newsitem start ---------------->
-                  <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="news_heading_7">
-                      <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#news_collapseOne_7" aria-expanded="false" aria-controls="news_collapseOne_7">
-                          2016年8月29日【臉書粉絲頁！成立！】
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="news_collapseOne_7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="news_heading_7">
-                      <div class="panel-body">
-                        <span class="accordion-title">我們的臉書粉絲頁成立囉！</span>
-                        <p>
-                        請在Facebook搜尋《有我在》，按下 LIKE，即時接收我們的訊息，與我們的網站小編第一類接觸！<br>
-                        想了解甚麼是「生命延展」嗎？想知道甚麼是「生命延展服務」？<br>
-                        <br>
-            請來訊洽詢，或密切注意我們官方粉絲頁的各種訊息喔！
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-            <!---------------- newsitem end---------------->
+                  </template>
 
                   </div><!-- /.panel-group -->
                 </div><!-- /.accordion -->
@@ -344,6 +216,7 @@
     </div>
   </div>
 </div>
+  
 </section>  <!-- news -->
 
 
@@ -359,12 +232,10 @@
      <div class="row">
       <div class="service-items">
         <div class="col-sm-6">
-            <p>目前生命延展服務所涵蓋的轉基因生物（Genetic Modified Organism, 簡稱GMO），已經完全進入商業運轉的僅有大腸桿菌、阿拉伯芥、香蕉、文心蘭等四種，接下來將陸續正式推出其他物種。<br>
-<br>
-所有技術面上的方法選擇，由本公司依照執行當下的技術發展與公司設備做調整，如您有特別偏好的方法或技術，需客製化調整或增添服務內容，無論您偏好的序列不是本公司系統設定，或您所偏好的物種不在此列，也歡迎您與產品專員聯繫，我們會就目前技術發展、序列或物種特性、以及本公司的設備與資源等，與您討論是否可行。若技術上可行，即可與您商議一個適宜的價格與詳細服務方式。所有產品諮詢的本身均為免費（不包含教學課程）。目前已經成功的客製化物種包括：蘑菇、藍綠藻、等。<br>
-</p>
-
-
+          <p>有我在TM生技服務，經過多年試營運的籌備，於2016年8月隆重上市，有我在TM是智慧的結晶，運用多項諾貝爾獎核心科技，萃煉出基因轉殖的現代工藝，將您的基因完美片段送入另一物種中，量身打造消費者生命的有我在TM基因工程與生命延展服務。</p>
+          <p>在台灣維持現狀的官方語境裡，「有我在」代表著「有我在，一切都不用擔心，我都一直在這裡」。《有我在》生技服務，超越了造物設計者的生華榮枯，實現了生命瑰麗的延展能量，不僅讓您能夠永遠陪伴您最重要的人，陪伴您自己，更能讓您更了解自己的真實存在。</p>
+          <p>目前生命延展服務所涵蓋的轉基因生物（Genetic Modified Organism, 簡稱GMO），已經完全進入商業運轉的僅有大腸桿菌、阿拉伯芥、香蕉、文心蘭等四種，接下來將陸續正式推出其他物種。所有技術面上的方法選擇，由本公司依照執行當下的技術發展與公司設備做調整。</p>
+          <p>我們也提供客製化的服務。如您有特別偏好的方法或技術，需客製化調整或增添服務內容，無論您偏好的序列不是本公司系統設定，或您所偏好的物種不在此列，也歡迎您與產品專員聯繫，我們會就目前技術發展、序列或物種特性、以及本公司的設備與資源等，與您討論是否可行。若技術上可行，即可與您商議一個適宜的價格與詳細服務方式。所有產品諮詢的本身均為免費（不包含教學課程）。目前已經成功的客製化物種包括：蘑菇、藍綠藻、等。</p>
         </div>
         <div class="col-sm-6">
           <div class="service-accordion">
@@ -412,7 +283,7 @@
                 </div>
                 <div id="product_collapse_3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="product_heading_3">
                   <div class="panel-body">
-                   <p>
+                    <p>
                       您可親至本公司，親身參與載有您基因的生命的成長，觀察並協助它們無性或有性的繁殖歷程。（針對每個生命延展專案，每年您能有一次免費參與親身繁衍的機會。）
                     </p>
                   </div>
@@ -444,7 +315,7 @@
                 </div>
                 <div id="product_collapse_5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="product_collapse_5">
                   <div class="panel-body">
-                   <p>
+                    <p>
                       本服務接受遠距委託，地點包括海外，但需附加運費（隨快遞公司價格調整）、樣品收集器材寄送盒裝包材費、以及遠距服務的行政處理費。
                     </p>
                   </div>
@@ -460,13 +331,13 @@
                 </div>
                 <div id="product_collapse_6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="product_heading_6">
                   <div class="panel-body">
-                   <p>
+                    <p>
                       針對您所選擇的服務內容，我們會提供基本的技術指導與原理說明，讓您更了解這項服務的精神與意涵。除此之外，為了回饋社會，我們也會不時錄製教學影片和文件放置網路上與公眾免費分享，您可自由觀看，探索服務背後隱含的科學與科技。
                     </p>
                   </div>
                 </div>
               </div>
-               <div class="panel panel-default">
+              <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="product_heading_7">
                   <h4 class="panel-title">
                     <a class="collapsed" data-toggle="collapse" data-parent="#product_accordion" href="#product_collapse_7" aria-expanded="false" aria-controls="product_collapse_7">
@@ -476,12 +347,50 @@
                 </div>
                 <div id="product_collapse_7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="product_heading_7">
                   <div class="panel-body">
-                   <p>
+                    <p>
                       您可隨時親至本公司探視您基因的載體，但建議您於至少兩周前預約，以利作業與排程。尤其是清明節前後業務特別繁忙，未免遺憾，請即早預約。
                     </p>
                   </div>
                 </div>
               </div>
+              <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="product_heading_8">
+                    <h4 class="panel-title">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#product_accordion" href="#product_collapse_8" aria-expanded="false" aria-controls="product_collapse_8">
+                        核心技術
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="product_collapse_8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="product_heading_8">
+                    <div class="panel-body">
+                      <ul>
+                        <li style="display:list-item;">基因轉殖技術: 熱衝擊，電穿孔，粒子轟擊、農桿菌、CRISPR</li>
+                        <li style="display:list-item;">篩選標記基因：Amp , Basta, or NPTII抗性</li>
+                        <li style="display:list-item;">報導基因：藍白篩選、螢光基因（GFP等</li>
+                        <li style="display:list-item;">序列確認：桑格定序法</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="product_heading_9">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#product_accordion" href="#product_collapse_9" aria-expanded="false" aria-controls="product_collapse_9">
+                          空間設施 
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="product_collapse_9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="product_heading_9">
+                      <div class="panel-body">
+                        <ul>
+                          <li style="display:list-item;">人工氣候室：控溫、控濕、控光</li>
+                          <li style="display:list-item;">冷藏：4度C，-20度C，-80度C</li>
+                          <li style="display:list-item;">乾燥箱：種子保存</li>
+                          <li style="display:list-item;">24小時線上直播監控系統</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
             </div>
           </div><!-- /.accordion -->
 
@@ -489,7 +398,7 @@
       </div>
       <div class="col-sm-12">
         <h3 style="margin-top: 30px; margin-bottom: 30px;">服務流程</h3>
-        <div class="txt_img "><img src="images/product_1.png"></div>
+        <div class="txt_img txt_img_L"><img src="images/product_1.png"></div>
         <h3 style="margin-top: 30px; margin-bottom: 30px;">生命延展服務</h3>
         <p>以下估算價格，僅涵蓋生命延展的基本服務項目，包括收集客戶檢體，委託基因轉殖、GMO委託保存、繁衍與養殖。從第11年起，價格隨物價浮動。有您基因的GMO，如無特別要求，原則上均將在本公司保存至少一線（LINE），直至合約結束。</p>
         <div class="txt_img txt_img_L" style="margin-top:20px;margin-bottom: 30px;"><img src="images/product_2.png"></div>
@@ -513,82 +422,25 @@
         <div class="latest-posts">
 
           
-<!-- 一篇開始 -->
-          <div class="col-sm-6">
-            <div class="item">
-              <article class="post type-post">
-                <div class="post-content">
-                  <h2 class="entry-title">
-                    春嬌與志明：見證愛情的儀式
-                  </h2>
-                  <p class="entry-text">
-                   我們買的是客製化的服務，各自把基因轉到蘑菇裡面，相約交換吃。不過因為要吃下去的話，還需要額外的申請，現在台灣的法律好像是不允許吃下去我們自己種的基因改造蘑菇？我聽不太懂，因為美國進口的基因改造黃豆不都有做成豆漿嗎？我常常在喝啊。<br>
-<br>
-因為我們是不婚主義者，所以沒有要結婚，這個我們就把它當作是一個見證現階段愛情的儀式了。可能愛情就像這個蘑菇一樣，蘑菇消化了排泄掉了，好像只是通過我們的身體，但是其實有一部分變成我們的營養了。
-                  </p>
-                </div><!-- /.post-content -->
-              </article>
-            </div><!-- /.item -->
-          </div>
-<!-- 一篇結束 -->
-<!-- 一篇開始 -->
-          <div class="col-sm-6">
-            <div class="item">
-              <article class="post type-post">
-                <div class="post-content">
-                  <h2 class="entry-title">
-                    紐約的王先生與老公：當作生育小孩的練習
-                  </h2>
-                  <p class="entry-text">
-                   我是在美國念研究所的時候認識我現在的老公，去年在美國結婚之後，就覺得可以養小孩。所以上次回台灣度假的時候，就請公司把我們兩個的基因接在一起，轉到大腸桿菌裡面，現在正在等公司幫我們申請，讓我們可以把這個有我們兩個基因的大腸桿菌帶去紐約，跟我們一起生活。<br>
-<br>
-我們把這個大腸桿菌當作是一個生育小孩的練習。將來如果有機會，我們可能會領養一個小孩吧。小孩跟大腸桿菌當然不一樣了，小孩即使沒有我的基因，但是在我們的陪伴之下，也會受到我們的影響，傳承我們這個家庭的價值。
-                  </p>
-                </div><!-- /.post-content -->
-              </article>
-            </div><!-- /.item -->
-          </div>
-<!-- 一篇結束 -->
-<!-- 一篇開始 -->
-          <div class="col-sm-6">
-            <div class="item">
-              <article class="post type-post">
-                <div class="post-content">
-                  <h2 class="entry-title">
-                    台東的彼得：家裡只有父親與我相依為命，如果我們其中一人離開，還活著的人會很孤單吧。
-                  </h2>
-                  <p class="entry-text">
-                   我母親在我弟弟出生不久之後，就跟我父親離婚了，過幾年改嫁之後她搬去台中，就很少見面，母親節的時候一起吃飯大家都客客氣氣的。前兩年我弟弟交通意外過世，家裡現在剩下我跟我老父兩人相依為命，經濟這麼不緊氣，我就算結婚可能也沒辦法生小孩，養不起啊。<br>
-<br>
-聽說了這個生命延展服務，就立刻給我和父親一人買一組大腸桿菌，這樣如果我們其中一人先離開，至少還有一個血脈相連的生命，當作一個陪伴。其實我母親改嫁之後有再生小孩，理論上就是我的弟弟妹妹啦，跟我有一半的基因相同，不過感覺起來就不像親人，可能因為我跟母親沒有太多感情吧。
-                  </p>
-                </div><!-- /.post-content -->
-              </article>
-            </div><!-- /.item -->
-          </div>
-<!-- 一篇結束 -->
-<!-- 一篇開始 -->
-          <div class="col-sm-6">
-            <div class="item">
-              <article class="post type-post">
-                <div class="post-content">
-                  <h2 class="entry-title">
-                    林家阿嬤與小孩子們：提早安排自己的後事
-                  </h2>
-                  <p class="entry-text">
-                   我今年已經八十多歲了。生有時死有時，我自己知道我來日無多。<br>
-<br>
-我家小孩都早婚，我已經都當曾祖母了。小的時候家裡很窮，他們林家也不是很有錢，年輕的時候真的是很苦，還好小孩都很爭氣也很孝順，長大出去上班賺了錢都有給我，還常常帶我出去玩，我也環遊世界了，五大洲都去過，只有非洲沒有去過因為要轉機好多次太累了，我不要去。<br>
-<br>
-去年的時候，我的一個孫女跟我說要把我變成一棵蘭花，那棵蘭花還可以變成很多棵，每個我的小孩子都可以有一棵，其實我是聽不太懂要做甚麼，但聽起來滿好，也不麻煩，就只是那個棉花棒在嘴巴裡面這樣弄一弄而已，我就答應了。<br>
-<br>
-現在那個有我的蘭花還很小一棵啦，我有空的時候就會叫我那個已經退休的大兒子開車帶我去公司的生長室看一下，我不會照顧啦，但是公司的人很專業，我是希望可以看到那個蘭花長到夠大開花，但是我也不知道我能不能活到那個時候。以前有些人，在生前就會替自己買好棺材墓地，這個意思也是差不多吧。
-                  </p>
-                </div><!-- /.post-content -->
-              </article>
-            </div><!-- /.item -->
-          </div>
-<!-- 一篇結束 -->
+          <!-- 一篇開始 -->
+          <template v-for="story of stories">
+            <div class="col-sm-6">
+              <div class="item">
+                <article class="post type-post">
+                  <div class="post-content">
+                    <h2 class="entry-title">
+                      {{story.title}}
+                    </h2>
+                    <template v-for="p of story.content">
+                      <p class="entry-text" v-html="p"></p>
+                    </template>
+                  </div><!-- /.post-content -->
+                </article>
+              </div><!-- /.item -->
+            </div>
+          </template>
+          <!-- 一篇結束 -->
+
 
       </div><!-- /.latest-posts -->
     </div><!-- /.row -->
@@ -628,20 +480,7 @@
       <p class="title-description" style="color: #99CC00;">About Us</p>
     </div><!-- /.post-area-top -->
     <p>西元2009年，幾個各具專長的好朋友聚在一起，想讓科學理性求真之外，更進一步的，為人類做點什麼。經過密集的討論與準備，2011年《有我在》計畫開始運作，經過五年的試營運，我們的服務不斷的改進與修正，《有我在® 生物科技股份有限公司》，正式成立於西元2016年8月，期待能提供最貼心的生命延展服務，陪伴每一個使用者的生命需求。</p>
-    </br><h4>核心技術 Core Technologies</h4></br>
-    <ul class="list-group">
-      <li class="list-group-item">基因轉殖技術：Heat Shock，Electroporation，Particle Bombardment，農桿菌</li>
-      <li class="list-group-item">篩選：Amp, Basta, NPTII</li>
-      <li class="list-group-item">標記：Blue/White Selection，螢光基因（GFP等</li>
-      <li class="list-group-item">序列驗證：Sanger Sequencing</li>
-    </ul>
-    </br><h4>空間設施</h4></br>
-    <ul class="list-group">
-      <li class="list-group-item">人工氣候室：控溫、控濕、控光</li>
-      <li class="list-group-item">冷藏：4度C，-20度C，-80度C</li>
-      <li class="list-group-item">乾燥箱：種子保存</li>
-      <li class="list-group-item">24小時線上直播監控系統</li>
-    </ul>
+
   </div>
 </div>
 </section>
@@ -650,8 +489,7 @@
 <footer id="contact">
   <div class="footer-top">
     <div class="text-center" style="margin-bottom: 40px; letter-spacing: 0.3rem;">
-      <h3>聯繫我們</h3></br>
-      <h5>Contact Us</h5>
+      <h3>聯繫我們</h3>
     </div>
     <div class="container">
      
@@ -684,9 +522,6 @@
 </div><!-- /#scroll-to-top -->
 
 
-
-
-
 <!-- Include jquery.min.js plugin -->
 <script src="assets/js/jquery-2.1.0.min.js"></script>
 <!-- Include YTPlayer.js plugin -->
@@ -698,30 +533,59 @@
 <script src="assets/js/functions.js"></script>
 
 <!-- VueJs  -->
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 <!-- axios -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script>
-var app = new Vue({
+var vNews = new Vue({
   el: '#news',
   created: function () {
     // `this` points to the vm instance
-    this.getNews();
+    this.geData();
   },
   data: {
     loading: true,
-    news: []
+    newsList: []
   },
   methods: {
     geData() {
       axios({
         method: 'get',
-        url: '/data/news_en.json',
+        url: '/data/news_tw.json',
       })
       .then((response) => {
-        this.news = response.data;
-        console.log('News :',news);
+        this.newsList = response.data.news;
+        console.log('newsList :',this.newsList);
+        this.loading = false;
+      })
+      .catch((error) => {
+        console.error(error)
+      });
+    },
+  }
+  
+})
+var vStory = new Vue({
+  el: '#stories',
+  created: function () {
+    // `this` points to the vm instance
+    this.geData();
+  },
+  data: {
+    loading: true,
+    stories: []
+  },
+  methods: {
+    geData() {
+      axios({
+        method: 'get',
+        url: '/data/story_tw.json',
+      })
+      .then((response) => {
+        this.stories = response.data.stories;
+        console.log('stories :',this.stories);
         this.loading = false;
       })
       .catch((error) => {
@@ -732,7 +596,6 @@ var app = new Vue({
   
 })
 </script>
-
 
 <script>
 
